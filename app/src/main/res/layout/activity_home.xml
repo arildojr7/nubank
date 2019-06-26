@@ -7,4 +7,67 @@
         android:layout_height="match_parent"
         tools:context=".ui.activities.HomeActivity">
 
+    <LinearLayout
+            android:id="@+id/llContainerHomeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        <TextView
+                android:drawableStart="@drawable/ic_feed_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arildo"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/gotham_bold"
+                android:textColor="@android:color/white"
+                android:gravity="center"/>
+
+        <ImageView
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_down"
+                android:contentDescription="@null"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/llContainerHomeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tvLabelBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_medium"
+                    android:textColor="@color/lightGray"
+                    android:text="@string/bank" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/tvUserBank"/>
+
+            <TextView
+                    android:id="@+id/tvUserBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_medium"
+                    android:textColor="@color/lightGray"
+                    android:text="@string/bank" app:layout_constraintStart_toEndOf="@+id/tvLabelBank"
+                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
