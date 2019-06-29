@@ -4,7 +4,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
-        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
@@ -14,4 +13,16 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
+    <style name="ButtonGrayRound" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@drawable/bg_button_gray_stroke_round</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
 </resources>

@@ -5,4 +5,16 @@
     <string name="bank">Banco</string>
     <string name="agency">Agência</string>
     <string name="account">Conta</string>
+    <string name="help_me">Me ajuda</string>
+    <string name="profile">Perfil</string>
+    <string name="profile_subtitle">Nome de preferência, telefone, e-mail</string>
+    <string name="nuaccount_settings">Configurar NuConta</string>
+    <string name="app_settings">Configurações do app</string>
+
+    <!--buttons-->
+    <string name="account_logout">SAIR DA CONTA</string>
+
+
+
+    <string name="none"></string>
 </resources>

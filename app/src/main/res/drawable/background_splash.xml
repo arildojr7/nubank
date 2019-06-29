@@ -5,7 +5,5 @@
         <color android:color="@color/colorPrimary" />
     </item>
 
-    <item android:drawable="@drawable/ic_nu_white" android:gravity="center">
-
-    </item>
+    <item android:drawable="@drawable/ic_nu_white" android:gravity="center"/>
 </layer-list>
