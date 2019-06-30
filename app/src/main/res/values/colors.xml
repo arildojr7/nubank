@@ -7,6 +7,7 @@
     <color name="lightGray">#DDDDDD</color>
     <color name="mediumGray">#AAAAAA</color>
     <color name="lightPurple">#c092ce</color>
+    <color name="translucidBlack">#BE000000</color>
     <color name="white">#FFFFFF</color>
 
 </resources>

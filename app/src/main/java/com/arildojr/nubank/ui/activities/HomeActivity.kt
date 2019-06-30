@@ -1,8 +1,8 @@
 package com.arildojr.nubank.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,13 +26,20 @@ class HomeActivity : AppCompatActivity() {
         val itemDecor = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         val adapter = MenuHomeAdapter(MenuHomeEnum.values().toList()) {
 
-            Log.e("::::", it.name)
+            when (it) {
+                MenuHomeEnum.HELP_ME -> {}
+
+                MenuHomeEnum.PROFILE -> { startActivity(Intent(this, ProfileActivity::class.java)) }
+
+                MenuHomeEnum.NUACCOUNT_SETTINGS -> {}
+
+                MenuHomeEnum.APP_SETTINGS -> {}
+            }
         }
 
         itemDecor.setDrawable(getDrawable( R.drawable.shape_item_divider)!!)
         binding.rvHomeMenu.addItemDecoration(itemDecor)
         binding.rvHomeMenu.setHasFixedSize(true)
-
         binding.rvHomeMenu.adapter = adapter
     }
 }
