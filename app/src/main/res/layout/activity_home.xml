@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activities.HomeActivity">
+
         <LinearLayout
             android:id="@+id/llContainerHome"
             android:layout_width="match_parent"
@@ -53,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="invisible">
+                android:alpha="0"
+                android:visibility="visible">
                 <LinearLayout
                     app:layout_constraintTop_toBottomOf="@id/llContainerHome"
                     android:layout_width="match_parent"
@@ -185,43 +187,31 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llContainerBottomCards"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingBottom="16dp"
-            android:orientation="horizontal">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBottomCards"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:overScrollMode="never"
-                android:paddingEnd="16dp"
-                android:clipToPadding="false"
-                tools:itemCount="4"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_bottom_card">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-
-        <View
-            android:id="@+id/viewOverlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/translucidBlack"
-            android:visibility="invisible"/>
+        <include android:id="@+id/footerContainer" layout="@layout/content_bottom_cards"/>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/centerGuideline"
+            android:id="@+id/topGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.13"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/footerGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8"/>
+
+        <com.arildojr.nubank.ui.customviews.FloatView
+            app:layout_constraintTop_toBottomOf="@id/topGuideline"
+            android:id="@+id/floatView"
+            android:background="@drawable/bg_white_round"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="380dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

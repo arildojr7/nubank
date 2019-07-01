@@ -16,3 +16,7 @@ fun View.fadeVisibility(show: Boolean) {
         }
     }
 }
+
+fun View.fadeVisibility(opacity: Float) {
+    this.alpha = opacity
+}

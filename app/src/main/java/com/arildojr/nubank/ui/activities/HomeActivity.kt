@@ -13,10 +13,18 @@ import com.arildojr.nubank.enums.MenuHomeEnum
 import com.arildojr.nubank.ui.adapters.BottomCardsAdapter
 import com.arildojr.nubank.ui.adapters.MenuHomeAdapter
 import com.arildojr.nubank.utils.fadeVisibility
+import android.graphics.Point
+import androidx.lifecycle.Observer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+
+    private var state = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,17 +32,38 @@ class HomeActivity : AppCompatActivity() {
 
         loadBottomCards()
         loadHomeMenu()
+        setupFloatView()
 
         binding.llTopHeader.setOnClickListener {
-            binding.llHeaderAccountDetails.fadeVisibility(true)
-            binding.llContainerBottomCards.fadeVisibility(false)
+            binding.llHeaderAccountDetails.fadeVisibility(!state)
+            binding.footerContainer.llContainerBottomCards.fadeVisibility(state)
+            state = !state
+        }
+
+
+    }
+
+    private fun setupFloatView() {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(100)
+            val display = windowManager.defaultDisplay
+            val size = Point()
+            display.getSize(size)
+            val height = size.y
+
+            binding.floatView.init(this@HomeActivity, null, binding.topGuideline.top, height)
+
+            binding.floatView.position.observe(this@HomeActivity, Observer {
+                binding.llHeaderAccountDetails.fadeVisibility((it).toFloat()/100)
+                binding.footerContainer.llContainerBottomCards.fadeVisibility(1-it/100.toFloat())
+
+            })
         }
     }
 
     private fun loadHomeMenu() {
         val itemDecor = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         val adapter = MenuHomeAdapter(MenuHomeEnum.values().toList()) {
-
             when (it) {
                 MenuHomeEnum.HELP_ME -> {
                 }
@@ -65,7 +94,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.rvBottomCards.setHasFixedSize(true)
-        binding.rvBottomCards.adapter = adapter
+        binding.footerContainer.rvBottomCards.setHasFixedSize(true)
+        binding.footerContainer.rvBottomCards.adapter = adapter
     }
 }
