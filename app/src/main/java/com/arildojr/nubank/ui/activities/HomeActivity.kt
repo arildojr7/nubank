@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arildojr.nubank.R
 import com.arildojr.nubank.databinding.ActivityHomeBinding
+import com.arildojr.nubank.enums.BottomCardsEnum
 import com.arildojr.nubank.enums.MenuHomeEnum
+import com.arildojr.nubank.ui.adapters.BottomCardsAdapter
 import com.arildojr.nubank.ui.adapters.MenuHomeAdapter
+import com.arildojr.nubank.utils.fadeVisibility
 
 class HomeActivity : AppCompatActivity() {
 
@@ -19,7 +22,13 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
+        loadBottomCards()
         loadHomeMenu()
+
+        binding.llTopHeader.setOnClickListener {
+            binding.llHeaderAccountDetails.fadeVisibility(true)
+            binding.llContainerBottomCards.fadeVisibility(false)
+        }
     }
 
     private fun loadHomeMenu() {
@@ -27,19 +36,36 @@ class HomeActivity : AppCompatActivity() {
         val adapter = MenuHomeAdapter(MenuHomeEnum.values().toList()) {
 
             when (it) {
-                MenuHomeEnum.HELP_ME -> {}
+                MenuHomeEnum.HELP_ME -> {
+                }
 
-                MenuHomeEnum.PROFILE -> { startActivity(Intent(this, ProfileActivity::class.java)) }
+                MenuHomeEnum.PROFILE -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                }
 
-                MenuHomeEnum.NUACCOUNT_SETTINGS -> {}
+                MenuHomeEnum.NUACCOUNT_SETTINGS -> {
+                }
 
-                MenuHomeEnum.APP_SETTINGS -> {}
+                MenuHomeEnum.APP_SETTINGS -> {
+                }
             }
         }
 
-        itemDecor.setDrawable(getDrawable( R.drawable.shape_item_divider)!!)
+        itemDecor.setDrawable(getDrawable(R.drawable.shape_item_divider)!!)
         binding.rvHomeMenu.addItemDecoration(itemDecor)
         binding.rvHomeMenu.setHasFixedSize(true)
         binding.rvHomeMenu.adapter = adapter
+    }
+
+    private fun loadBottomCards() {
+        val adapter = BottomCardsAdapter(BottomCardsEnum.values().toList()) {
+
+            when (it) {
+                BottomCardsEnum.INDICATE_FRIEND -> {
+                }
+            }
+        }
+        binding.rvBottomCards.setHasFixedSize(true)
+        binding.rvBottomCards.adapter = adapter
     }
 }

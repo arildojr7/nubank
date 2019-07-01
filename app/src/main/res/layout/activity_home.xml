@@ -8,17 +8,19 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.HomeActivity">
         <LinearLayout
+            android:id="@+id/llContainerHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.activities.HomeActivity"
             android:orientation="vertical"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal">
 
             <LinearLayout
-                android:id="@+id/llContainerHomeDetails"
-                android:layout_width="match_parent"
+                android:id="@+id/llTopHeader"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="20dp"
@@ -48,140 +50,178 @@
 
             <LinearLayout
                 android:id="@+id/llHeaderAccountDetails"
-                app:layout_constraintTop_toBottomOf="@id/llContainerHomeDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="24dp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/qr_code"/>
-
+                android:visibility="invisible">
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="12dp">
-
-                    <TextView
-                        android:id="@+id/tvLabelBank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_medium"
-                        android:textColor="@color/lightGray"
-                        android:textSize="12sp"
-                        android:text="@string/bank"/>
-
-                    <TextView
-                        android:id="@+id/tvUserBank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_bold"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="4dp"
-                        android:textSize="12sp"
-                        android:text="260 - Nu Pagamentos S.A."/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="4dp">
-
-                    <TextView
-                        android:id="@+id/tvLabelAgency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_medium"
-                        android:textColor="@color/lightGray"
-                        android:textSize="12sp"
-                        android:text="@string/agency"/>
-
-                    <TextView
-                        android:id="@+id/tvUserAgency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_bold"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:layout_marginStart="4dp"
-                        android:text="0001"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="4dp">
-
-                    <TextView
-                        android:id="@+id/tvLabelAccount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_medium"
-                        android:textColor="@color/lightGray"
-                        android:textSize="12sp"
-                        android:text="@string/account"/>
-
-                    <TextView
-                        android:id="@+id/tvUserAccount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gotham_bold"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:layout_marginStart="4dp"
-                        android:text="9023423-2"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical">
-
-                <View android:layout_width="match_parent"
-                      android:layout_height="1dp"
-                      android:background="@color/colorAccent"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHomeMenu"
+                    app:layout_constraintTop_toBottomOf="@id/llContainerHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:itemCount="4"
                     android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_menu_home">
+                    android:layout_marginTop="24dp"
+                    android:gravity="center">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/qr_code"/>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelBank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/bank"/>
+
+                        <TextView
+                            android:id="@+id/tvUserBank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="4dp"
+                            android:textSize="12sp"
+                            android:text="260 - Nu Pagamentos S.A."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelAgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/agency"/>
+
+                        <TextView
+                            android:id="@+id/tvUserAgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:layout_marginStart="4dp"
+                            android:text="0001"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/account"/>
+
+                        <TextView
+                            android:id="@+id/tvUserAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:layout_marginStart="4dp"
+                            android:text="9023423-2"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical">
+
+                    <View android:layout_width="match_parent"
+                          android:layout_height="1dp"
+                          android:background="@color/colorAccent"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHomeMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:itemCount="4"
+                        android:overScrollMode="never"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_menu_home">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonGrayRound"
+                    android:text="@string/account_logout"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"/>
             </LinearLayout>
+        </LinearLayout>
 
-            <Button
-                android:layout_marginTop="24dp"
+        <LinearLayout
+            android:id="@+id/llContainerBottomCards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingBottom="16dp"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBottomCards"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ButtonGrayRound"
-                android:text="@string/account_logout"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"/>
+                android:paddingStart="16dp"
+                android:overScrollMode="never"
+                android:paddingEnd="16dp"
+                android:clipToPadding="false"
+                tools:itemCount="4"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_bottom_card">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
+
         <View
             android:id="@+id/viewOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/translucidBlack"
             android:visibility="invisible"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/centerGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
