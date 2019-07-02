@@ -13,7 +13,6 @@ import com.arildojr.nubank.enums.MenuHomeEnum
 import com.arildojr.nubank.ui.adapters.BottomCardsAdapter
 import com.arildojr.nubank.ui.adapters.MenuHomeAdapter
 import com.arildojr.nubank.utils.fadeVisibility
-import android.graphics.Point
 import androidx.lifecycle.Observer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,17 +45,11 @@ class HomeActivity : AppCompatActivity() {
     private fun setupFloatView() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(100)
-            val display = windowManager.defaultDisplay
-            val size = Point()
-            display.getSize(size)
-            val height = size.y
-
-            binding.floatView.init(this@HomeActivity, null, binding.topGuideline.top, height)
+            binding.floatView.init(this@HomeActivity, binding.topGuideline.top, binding.footerGuideline.top)
 
             binding.floatView.position.observe(this@HomeActivity, Observer {
-                binding.llHeaderAccountDetails.fadeVisibility((it).toFloat()/100)
-                binding.footerContainer.llContainerBottomCards.fadeVisibility(1-it/100.toFloat())
-
+                binding.llHeaderAccountDetails.fadeVisibility((it).toFloat() / 100)
+                binding.footerContainer.llContainerBottomCards.fadeVisibility(1 - it / 100.toFloat())
             })
         }
     }

@@ -13,54 +13,49 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.lifecycle.MutableLiveData
 import com.arildojr.nubank.R
+import kotlin.math.max
+import kotlin.math.min
 
 class FloatView : FrameLayout, View.OnTouchListener {
-    private var topGuideline = 0
-    private var footerGuideline = 0
-    private var lastY = 0F
-    val position: MutableLiveData<Int> = MutableLiveData()
-
-    private companion object Params {
-        const val STIFFNESS = SpringForce.STIFFNESS_LOW
-        const val DAMPING_RATIO = SpringForce.DAMPING_RATIO_LOW_BOUNCY
-    }
-
-    private var downRawX = 0F
-    private var downRawY = 0F
-    private var dX = 0F
-    private var dY = 0F
-
-    private lateinit var yAnimation: SpringAnimation
-
     constructor(context: Context) : super(context)
-
     constructor(context: Context, @Nullable attrs: AttributeSet) : super(context, attrs)
-
     constructor(context: Context, @Nullable attrs: AttributeSet, @AttrRes defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
     )
 
+    private companion object Params {
+        const val STIFFNESS = SpringForce.STIFFNESS_LOW * 3
+        const val DAMPING_RATIO = SpringForce.DAMPING_RATIO_LOW_BOUNCY
+    }
+
+    private var topGuideline = 0
+    private var footerGuideline = 0
+    private var lastY = 0F
+
+    val position: MutableLiveData<Int> = MutableLiveData()
+
+    private var downRawX = 0F
+    private var downRawY = 0F
+    private var dX = 0F
+    private var dY = 0F
+
+    private var yAnimation: SpringAnimation? = null
+
     fun init(
         context: Context,
-        attributeSet: AttributeSet?,
         topGuideline: Int,
         footerGuideline: Int
     ) {
         this.topGuideline = topGuideline
-        this.footerGuideline = footerGuideline - 130
+        this.footerGuideline = footerGuideline
         val inflater: LayoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         val view = inflater.inflate(R.layout.custom_float_view, this)
 
         view.setOnTouchListener(this)
-    }
-
-    private fun calculateOpacity(position: Double, top: Double, bottom: Double): Int {
-        val value = (position - top) / (bottom - top) * 100
-        return value.toInt()
     }
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
@@ -94,28 +89,32 @@ class FloatView : FrameLayout, View.OnTouchListener {
 
             MotionEvent.ACTION_UP -> {
                 if (lastY < motionEvent.y) {
-                    position.value =
-                        calculateOpacity(top.toDouble(), top.toDouble(), footerGuideline.toDouble())
                     yAnimation = createSpringAnimation(
                         view, SpringAnimation.Y, top.toFloat(), STIFFNESS, DAMPING_RATIO
                     )
-                } else {
-                    position.value = calculateOpacity(
-                        footerGuideline.toDouble(),
-                        top.toDouble(),
-                        footerGuideline.toDouble()
-                    )
-
+                } else if (lastY > motionEvent.y){
                     yAnimation = createSpringAnimation(
                         view, SpringAnimation.Y, footerGuideline.toFloat(), STIFFNESS, DAMPING_RATIO
                     )
                 }
-                yAnimation.start()
+
+                yAnimation?.addUpdateListener { _, viewPosition, _ ->
+                    position.value = calculateOpacity(
+                        viewPosition.toDouble(),
+                        top.toDouble(),
+                        footerGuideline.toDouble()
+                    )
+                }?.start()
 
                 return false
             }
             else -> return super.onTouchEvent(motionEvent)
         }
+    }
+
+    private fun calculateOpacity(position: Double, top: Double, bottom: Double): Int {
+        val value = (position - top) / (bottom - top) * 100
+        return max(0.0, min(100.0, value)).toInt()
     }
 
     private fun createSpringAnimation(
