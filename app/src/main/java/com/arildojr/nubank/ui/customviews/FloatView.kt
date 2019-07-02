@@ -76,7 +76,10 @@ class FloatView : FrameLayout, View.OnTouchListener {
 
             MotionEvent.ACTION_MOVE -> {
                 lastY = motionEvent.y
-                val newY = motionEvent.rawY + dY
+                var newY = motionEvent.rawY + dY
+
+                newY = max(topGuideline.toFloat(), newY) // limit top position
+                newY = min((footerGuideline).toFloat(), newY) // limit bottom position
 
                 position.value =
                     calculateOpacity(newY.toDouble(), top.toDouble(), footerGuideline.toDouble())
