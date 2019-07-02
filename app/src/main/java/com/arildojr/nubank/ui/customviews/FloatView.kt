@@ -105,6 +105,7 @@ class FloatView : FrameLayout, View.OnTouchListener {
                         footerGuideline.toDouble()
                     )
                 }?.start()
+                yAnimation = null
 
                 return false
             }
