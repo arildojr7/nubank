@@ -203,13 +203,10 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_end="48dp"/>
 
-        <com.arildojr.nubank.ui.customviews.FloatView
+        <com.arildojr.nubank.ui.customviews.CustomViewPager
             app:layout_constraintTop_toBottomOf="@id/topGuideline"
             android:id="@+id/floatView"
-            android:background="@drawable/bg_white_round"
             android:layout_width="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_height="380dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

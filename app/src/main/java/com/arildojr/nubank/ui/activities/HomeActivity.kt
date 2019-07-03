@@ -18,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.arildojr.nubank.ui.adapters.ViewPagerAdapter
 
 class HomeActivity : AppCompatActivity() {
 
@@ -38,11 +39,12 @@ class HomeActivity : AppCompatActivity() {
             binding.footerContainer.llContainerBottomCards.fadeVisibility(state)
             state = !state
         }
-
-
     }
 
     private fun setupFloatView() {
+        val viewPager = binding.floatView
+        viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
+
         CoroutineScope(Dispatchers.Main).launch {
             delay(100)
             binding.floatView.init(this@HomeActivity, binding.topGuideline.top, binding.footerGuideline.top)
