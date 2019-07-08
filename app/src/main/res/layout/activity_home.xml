@@ -1,10 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activities.HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/llContainerHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:id="@+id/llTopHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:drawableStart="@drawable/ic_feed_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arildo"
+                    android:textSize="20sp"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/gotham_bold"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_marginTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down"
+                    android:contentDescription="@null"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llHeaderAccountDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:alpha="0"
+                android:visibility="visible">
+                <LinearLayout
+                    app:layout_constraintTop_toBottomOf="@id/llContainerHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/qr_code"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelBank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/bank"/>
+
+                        <TextView
+                            android:id="@+id/tvUserBank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="4dp"
+                            android:textSize="12sp"
+                            android:text="260 - Nu Pagamentos S.A."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelAgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/agency"/>
+
+                        <TextView
+                            android:id="@+id/tvUserAgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:layout_marginStart="4dp"
+                            android:text="0001"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="4dp">
+
+                        <TextView
+                            android:id="@+id/tvLabelAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_medium"
+                            android:textColor="@color/lightGray"
+                            android:textSize="12sp"
+                            android:text="@string/account"/>
+
+                        <TextView
+                            android:id="@+id/tvUserAccount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gotham_bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:layout_marginStart="4dp"
+                            android:text="9023423-2"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical">
+
+                    <View android:layout_width="match_parent"
+                          android:layout_height="1dp"
+                          android:background="@color/colorAccent"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHomeMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:itemCount="4"
+                        android:overScrollMode="never"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_menu_home">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonGrayRound"
+                    android:text="@string/account_logout"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <include android:id="@+id/footerContainer" layout="@layout/content_bottom_cards"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="120dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/footerGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="48dp"/>
+
+        <com.arildojr.nubank.ui.customviews.CustomViewPager
+            app:layout_constraintTop_toBottomOf="@id/topGuideline"
+            android:id="@+id/floatView"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Nubank</string>
+
+    <!--home details-->
+    <string name="bank">Banco</string>
+    <string name="agency">Agência</string>
+    <string name="account">Conta</string>
+    <string name="help_me">Me ajuda</string>
+    <string name="profile">Perfil</string>
+    <string name="profile_subtitle">Nome de preferência, telefone, e-mail</string>
+    <string name="nuaccount_settings">Configurar NuConta</string>
+    <string name="app_settings">Configurações do app</string>
+
+    <!--buttons-->
+    <string name="account_logout">SAIR DA CONTA</string>
+
+
+    <string name="none"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
